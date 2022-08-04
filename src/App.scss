@@ -1,0 +1,16 @@
+@import "varibales";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $defaultFont;
+}
+
+.App {
+  height: 100vh;
+  padding-top: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,36 @@
+@import "../../varibales";
+
+.setAlarm {
+  .timePicker {
+    input, select {
+      outline: none;
+    }
+
+    .react-time-picker {
+      &__clear-button {
+        display: none;
+      }
+
+      &__wrapper {
+        padding: 10px;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  display: flex;
+  flex-direction: column;
+  width: 10%;
+
+  .setAlarmButton {
+    border: none;
+    outline: none;
+    background-color: $blue;
+    color: white;
+    margin-top: 1rem;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 17px;
+  }
+}

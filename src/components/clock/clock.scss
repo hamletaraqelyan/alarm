@@ -1,0 +1,177 @@
+@import "../../varibales";
+
+.clock {
+  $borderSize: #{$clockSize/12};
+  $clockPadding: #{$clockSize/50};
+
+  width: $clockSize;
+  height: $clockSize;
+  background-color: $blue;
+  border: $borderSize solid #cbf0fd;
+  border-radius: 50%;
+  padding: $clockPadding;
+  position: relative;
+  margin-right: 100px;
+  z-index: 1;
+
+  .head {
+    width: calc(100% + 2 * #{$borderSize});
+    height: calc(100% + 2 * #{$borderSize});
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .leftSide, .rightSide {
+      position: absolute;
+      width: #{$clockSize/30};
+      height: #{$clockSize/3.5};
+      bottom: 100%;
+      left: 15%;
+      transform: translateY(33%) rotate(-31deg);
+      background-color: $lightGray;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -45%);
+        width: #{$clockSize/2.5};
+        height: #{$clockSize/5};
+        background-color: $blue;
+        border-top-left-radius: #{$clockSize/2.5};
+        border-top-right-radius: #{$clockSize/2.5};
+      }
+
+      .top {
+        position: absolute;
+        width: #{$clockSize/11};
+        height: #{$clockSize/40};
+        border-radius: 5px;
+        background-color: darken($lightGray, 20%);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, calc(-50% - #{$clockSize/10}));
+      }
+    }
+
+    .rightSide {
+      left: unset;
+      right: 15%;
+      transform: translateY(33%) rotate(31deg);
+    }
+
+    .centerSide {
+      $beforeHeight: #{$clockSize/10};
+      $afterHeight: #{$clockSize/30};
+
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      transform: rotate(0);
+
+      &.ringing {
+        animation: ring .2s linear infinite;
+      }
+
+      &::before, &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 100%;
+        transform: translateX(-50%);
+        width: 4px;
+        height: $beforeHeight;
+        background-color: $lightGray;
+      }
+
+      &::after {
+        height: $afterHeight;
+        width: #{$clockSize/7};
+        border-radius: 5px;
+        bottom: calc(100% + #{$beforeHeight});
+        transform: translateX(-50%);
+      }
+
+      @keyframes ring {
+        25% {
+          transform: rotate(7deg);
+        }
+
+        50%, 100% {
+          transform: rotate(0deg);
+        }
+
+        75% {
+          transform: rotate(-7deg);
+        }
+      }
+    }
+
+    &::before {
+      content: '';
+      width: 70%;
+      height: 35%;
+      border-radius: 80px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: none;
+      border-top: 10px solid;
+      border-left: 5px solid;
+      border-right: 5px solid;
+      border-color: darken($lightGray, 20%);
+    }
+  }
+
+  .legs {
+    width: calc(100% + 2 * #{$borderSize});
+    height: calc(100% + 2 * #{$borderSize});
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &::before, &::after {
+      transform: rotate(35deg);
+      content: "";
+      position: absolute;
+      width: #{$clockSize/12};
+      height: #{$clockSize/10};
+      background-color: $lightGray;
+      border-bottom-right-radius: 10px;
+      bottom: 0;
+      left: 15%;
+      z-index: -1;
+    }
+
+    &::after {
+      transform: rotate(-35deg);
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 10px;
+      left: unset;
+      right: 15%;
+    }
+  }
+
+  .ampm {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: darken($blue, 5%);
+    padding: 5px 7px;
+    box-shadow: inset 0 0 3px rgba(#000000, 0.4);
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+  }
+}

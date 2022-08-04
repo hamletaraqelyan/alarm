@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import TimePicker from 'react-time-picker';
 import "./setAlarm.scss"
 import {formatAMPM} from "../../helpers";
@@ -10,6 +10,11 @@ const SetAlarm = ({setAlarm, activeAlarm, ringing}) => {
         const timeSplit = time?.split(':');
         timeSplit && setValue(formatAMPM(timeSplit[0], timeSplit[1]));
     }
+
+    useEffect(() => {
+        const amPm = document.querySelector('.react-time-picker__inputGroup__amPm');
+        amPm.firstChild.textContent = 'AM/PM';
+    }, [])
 
     return (
         <div className='setAlarm'>

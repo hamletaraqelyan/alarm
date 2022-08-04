@@ -15,6 +15,12 @@
         padding: 10px;
         border-radius: 5px;
       }
+
+      &__inputGroup {
+        select {
+          color: #757575;
+        }
+      }
     }
   }
 
@@ -32,5 +38,12 @@
     padding: 10px;
     cursor: pointer;
     font-size: 17px;
+  }
+}
+
+@media (max-width: 480px) {
+  .setAlarm {
+    margin-top: 30%;
+    width: 80%;
   }
 }

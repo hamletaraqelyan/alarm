@@ -7,19 +7,22 @@ import AlarmSound from "../../alarmSound.wav";
 import HeadClock from "../headClock/headClock";
 import "./clock.scss";
 
+const alarmRing = new Audio(AlarmSound);
+
 const Clock = () => {
     const [alarmTime, setAlarmTime] = useState('');
     const [activeAlarm, setActiveAlarm] = useState(false);
     const [ringing, setRinging] = useState(false);
-    const alarmRing = new Audio(AlarmSound);
 
     useEffect(() => {
         setActiveAlarm(!!alarmTime);
     }, [alarmTime])
 
     useEffect(() => {
+        console.log(alarmTime);
         if (activeAlarm && alarmTime) {
             const interval = setInterval(() => {
+                console.log(formatAMPM(new Date().getHours(), new Date().getMinutes()));
                 if (alarmTime === formatAMPM(new Date().getHours(), new Date().getMinutes())) {
                     setRinging(true);
                     alarmRing.play();

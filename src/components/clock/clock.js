@@ -19,10 +19,8 @@ const Clock = () => {
     }, [alarmTime])
 
     useEffect(() => {
-        console.log(alarmTime);
         if (activeAlarm && alarmTime) {
             const interval = setInterval(() => {
-                console.log(formatAMPM(new Date().getHours(), new Date().getMinutes()));
                 if (alarmTime === formatAMPM(new Date().getHours(), new Date().getMinutes())) {
                     setRinging(true);
                     alarmRing.play();

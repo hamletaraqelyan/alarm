@@ -1,32 +1,35 @@
 @import "../../varibales";
 
 .setAlarm {
-  .timePicker {
-    input, select {
+  display: flex;
+  flex-direction: column;
+  width: 13%;
+
+  .rc-time-picker {
+    &-input {
+      padding: 10px;
+      height: auto;
       outline: none;
+
+      &::placeholder {
+        font-size: 14px;
+      }
     }
 
-    .react-time-picker {
-      &__clear-button {
+    &-clear {
+      top: 50%;
+      transform: translateY(-50%);
+
+      i {
         display: none;
       }
 
-      &__wrapper {
-        padding: 10px;
-        border-radius: 5px;
-      }
-
-      &__inputGroup {
-        select {
-          color: #757575;
-        }
+      &::after {
+        content: "✕";
+        font-size: 11px;
       }
     }
   }
-
-  display: flex;
-  flex-direction: column;
-  width: 10%;
 
   .setAlarmButton {
     border: none;
@@ -37,7 +40,7 @@
     border-radius: 5px;
     padding: 10px;
     cursor: pointer;
-    font-size: 17px;
+    font-size: 16px;
   }
 }
 

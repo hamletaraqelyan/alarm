@@ -11,10 +11,9 @@ export const formatAMPM = (hour, minute) => {
     }
 
     if (HH === 0) HH = 12;
-    if (HH < 10) HH = `0${HH}`;
     if (MM < 10) MM = `0${MM}`;
 
-    return `${HH}:${MM}:00 ${ampm}`
+    return `${HH}:${MM} ${ampm}`
 }
 
 export const getAMPM = () => {

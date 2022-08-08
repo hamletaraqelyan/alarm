@@ -1,11 +1,12 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import Numbers from "../numbers/numbers";
 import Hands from "../hands/hands";
-import SetAlarm from "../setAlarm/setAlarm";
 import {formatAMPM, getAMPM} from "../../helpers";
 import AlarmSound from "../../alarmSound.wav";
 import HeadClock from "../headClock/headClock";
 import "./clock.scss";
+import AlarmInput from "../alarmInput/alarmInput";
+import 'rc-time-picker/assets/index.css';
 
 const alarmRing = new Audio(AlarmSound);
 
@@ -47,7 +48,7 @@ const Clock = () => {
                 <Hands/>
                 <div className="legs"/>
             </div>
-            <SetAlarm setAlarm={time => setAlarmTime(time)} activeAlarm={activeAlarm} ringing={ringing}/>
+            <AlarmInput ringing={ringing} activeAlarm={activeAlarm} setAlarm={time => setAlarmTime(time)}/>
         </Fragment>
     );
 };
